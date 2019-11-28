@@ -1,0 +1,28 @@
+{
+  "name": "organizer",
+  "version": "1.0.0",
+  "description": "Organizer, your daily schedule and finance assistant.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdityaMunot/Organizer.git"
+  },
+  "author": "Aditya R Munot 10442400",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdityaMunot/Organizer/issues"
+  },
+  "homepage": "https://github.com/AdityaMunot/Organizer#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "mongodb": "^3.3.5",
+    "nodemon": "^2.0.1"
+  }
+}
