@@ -1,5 +1,4 @@
 const mongoCollections = require("../config/mongoCollections");
-var mongodb = require('mongodb');
 const users = mongoCollections.users;
 
 const createUser = async function createUser(uName, pwd, emailId, firstName, lastName) {
@@ -19,6 +18,17 @@ const createUser = async function createUser(uName, pwd, emailId, firstName, las
     const salts = 16
 
     let newUser = {}
+
+    const _users = await users()
+
+    let unameAlreadyExists
+    let regExPwd =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    let regExUname = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
+    let regExEmailID = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    
+    validPwd = ""
+    acceptedUName = ""
+    acceptedEmailID = ""
 
     if(regExEmailID.test(emailId)){
         acceptedEmailID = emailId.toLowerCase()
@@ -62,11 +72,7 @@ const createUser = async function createUser(uName, pwd, emailId, firstName, las
         emailID:acceptedEmailID,
         uName:acceptedUName.toLowerCase(),
         pwd:hashedPwd,
-        posts:[],
-        comments:[],
-        score:score,
-        avatar:avatar,
-        superpowers:superpowers
+        accounts:[]
     }
 
     const inserted = await _users.insertOne(newUser)
