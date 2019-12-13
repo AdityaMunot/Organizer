@@ -11,5 +11,5 @@ const getCollection = collection =>{
 };
 
 module.exports={
-  
+  users : getCollection("users")
 }
