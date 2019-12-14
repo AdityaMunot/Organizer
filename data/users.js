@@ -3,13 +3,13 @@ const users = mongoCollections.users;
 
 let exportedMethods = {
 
-    async createUser(uName, pwd, emailId, firstName, lastName) {
+    async addUser(uName, pwd, emailId, firstName, lastName) {
 
-        if (!uName) throw "for createUser() you must provide username"
-        if (!pwd) throw "for createUser() you must provide a password"
-        if (!emailId) throw "for createUser() you must provide an email-id"
-        if (!firstName) throw "for createUser() you must provide first name"
-        if (!lastName) throw "for createUser() you must provide last name"
+        if (!uName) throw "for addUser() you must provide username"
+        if (!pwd) throw "for addUser() you must provide a password"
+        if (!emailId) throw "for addUser() you must provide an email-id"
+        if (!firstName) throw "for addUser() you must provide first name"
+        if (!lastName) throw "for addUser() you must provide last name"
 
         if (typeof uName != "string") throw "for create() username must be a string"
         if (typeof pwd != "string") throw "for create() password must be string"
