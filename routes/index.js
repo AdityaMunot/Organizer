@@ -1,3 +1,5 @@
+const loginRoutes = require("./login")
+
 
 const constructorMethod = app => {
 
@@ -17,13 +19,7 @@ const constructorMethod = app => {
         }
     })
 
-    app.use("/signin", (req, res) => {
-        try {
-            res.render("details/signin")
-        } catch (e) {
-            res.status(404).json({ error: e })
-        }
-    })
+    app.use("/login", loginRoutes)
 
     app.use("/schedule", (req, res) => {
         try {
