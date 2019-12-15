@@ -1,0 +1,70 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">ORGANIZER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/finance">Finance</a>
+                </li>
+            </ul>
+            <div>
+                <a class="btn btn-outline-success" href="/signin">Sign in</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container-fluid col-lg-4 col-md-6" style="margin-top: 60px;">
+
+    <form action="/signup" method="POST" class="needs-validated">
+        <div class="form-group">
+            <h1>Sign up for ORGANIZER</h1>
+            <p>Fill in the details to create your account</p>
+            <hr>
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name: </label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="firstName" required>
+            <div class ="valid-feedback">Valid.</div>
+            <div class ="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name: </label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="lastName" required>
+            <div class ="valid-feedback">Valid.</div>
+            <div class ="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
+            <div class ="valid-feedback">Valid.</div>
+            <div class ="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="username">User Name: </label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username" required>
+            <div class ="valid-feedback">Valid.</div>
+            <div class ="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
+            <div class ="valid-feedback">Valid.</div>
+            <div class ="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+        </div>
+    </form>
+</main>
