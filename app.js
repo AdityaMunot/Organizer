@@ -1,16 +1,18 @@
 const express = require("express");
-const session = require('express-session')
+const session = require('express-session');
 const expHbs = require("express-handlebars");
 const static = express.static(__dirname + "/public");
 const bodyParser = require("body-parser");
 const configRoutes = require("./routes");
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 
-app.use("/public", static)
+app.use("/public", static);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(cookieParser());
 
 app.use(session({
     name: 'AuthCookie',
@@ -18,6 +20,16 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }))
+
+app.use('*',(req,res, next)=>{
+    console.log("[%s]: %s %s (%s)",
+       new Date().toUTCString(),
+       req.method,
+       req.originalUrl,
+       `${req.session.user ? "" : "Non-"}Authenticated User`
+       );
+    next()
+})
 
 app.engine("handlebars", expHbs({defaultLayout: "main" }));
 app.set("view engine", "handlebars");

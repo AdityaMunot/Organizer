@@ -1,4 +1,5 @@
 const loginRoutes = require("./login")
+const logoutRoutes = require("./logout")
 
 
 const constructorMethod = app => {
@@ -20,6 +21,7 @@ const constructorMethod = app => {
     })
 
     app.use("/login", loginRoutes)
+    app.use("/logout", logoutRoutes)
 
     app.use("/schedule", (req, res) => {
         try {
