@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/home">ORGANIZER</a>
+        <a class="navbar-brand" href="/home">ORGANIZER<span class="sr-only">(current)</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,8 +11,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/profile">Profile</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/schedule">Schedule <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/schedule">Schedule</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/finance">Finance</a>
@@ -21,52 +21,51 @@
             </ul>
             <div>
                 {{#if expreq.session.userID}}
-                    <a class="btn btn-outline-success" href="/logout">Log out</a>
+                <a class="btn btn-outline-success" href="/logout">Log out</a>
                 {{else}}
-                    <a class="btn btn-outline-success" href="/login">Login</a>
-                    <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                <a class="btn btn-outline-success" href="/login">Login</a>
+                <a class="btn btn-outline-success" href="/signup">Sign up</a>
                 {{/if}}
             </div>
         </div>
     </nav>
 
-    <div class="container">
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <form id="form">
-                        <div class="form-group"><br>
-                            <label for="todo">To do</label>
-                            <input type="text" class="form-control" id="todoUserInput" placeholder="Todo">
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <ul class="list-group" id="display">
-
-                    </ul>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <div class="alert" role="alert" id="message">
-
+    {{!-- <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <form id="form">
+                    <div class="form-group"><br>
+                        <label for="todo">To do</label>
+                        <input type="text" class="form-control" id="todoUserInput" placeholder="Todo">
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </div>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
 
+                </form>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <ul class="list-group" id="display">
+
+                </ul>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="alert" role="alert" id="message">
+
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
         </div>
 
+    </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -202,5 +201,43 @@
                     });
                 });
             });
-        </script>
+        </script> --}} 
+
+    <article class="new-post">
+        <h1>Create a Task!</h1>
+        <form action="/index" method="POST" class="new-post-form">
+            <label>
+                Task Title
+                <input type="text" name="title" placeholder="Post Title" value="{{post.title}}"
+                    class="full-width-input" /><br>
+            </label>
+            <label for="post-body">
+                Task Body
+            </label>
+            <textarea id="post-body" name="body" rows="4" placeholder="Task Content"
+                class="full-width-input">{{post.body}}</textarea>
+
+            <label for="poster">
+                Poster
+            </label>
+            <select class="full-width-input" name="posterId">
+                <option value="">Select User...</option>
+                {{#each users}}
+                <option value="{{_id}}">{{firstName}} {{lastName}}</option>
+                {{/each}}
+            </select>
+            <button type="submit">Create New Task</button>
+            <button type="reset">Clear Form</button>
+        </form>
+        {{#if hasErrors}}
+        <ul class="error-list">
+            {{#each errors}}
+            <li>
+                {{this}}
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </article>
+
 </header>

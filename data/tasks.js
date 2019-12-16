@@ -8,12 +8,6 @@ const exportedMethods = {
     const taskCollection = await tasks();
     return await taskCollection.find({}).toArray();
   },
-  async getTasksByTag(tag) {
-    if (!tag) throw 'No tag provided';
-
-    const taskCollection = await tasks();
-    return await taskCollection.find({tags: tag}).toArray();
-  },
   async getTaskById(id) {
     const taskCollection = await tasks();
     const task = await taskCollection.findOne({_id: id});
@@ -21,13 +15,10 @@ const exportedMethods = {
     if (!task) throw 'Task not found';
     return task;
   },
-  async addTask(title, body, tags, posterId) {
+  async addTask(title, body, posterId) {
     if (typeof title !== 'string') throw 'No title provided';
     if (typeof body !== 'string') throw 'I aint got nobody!';
 
-    if (!Array.isArray(tags)) {
-      tags = [];
-    }
 
     const taskCollection = await tasks();
 
@@ -40,7 +31,6 @@ const exportedMethods = {
         id: posterId,
         name: `${userThatPosted.firstName} ${userThatPosted.lastName}`
       },
-      tags: tags,
       _id: uuid()
     };
 
@@ -72,10 +62,6 @@ const exportedMethods = {
 
     const updatedTaskData = {};
 
-    if (updatedTask.tags) {
-      updatedTaskData.tags = updatedTask.tags;
-    }
-
     if (updatedTask.title) {
       updatedTaskData.title = updatedTask.title;
     }
@@ -88,26 +74,6 @@ const exportedMethods = {
 
     return await this.getTaskById(id);
   },
-  async renameTag(oldTag, newTag) {
-    if (oldTag === newTag) throw 'tags are the same';
-    let findDocuments = {
-      tags: oldTag
-    };
-
-    let firstUpdate = {
-      $addToSet: {tags: newTag}
-    };
-
-    let secondUpdate = {
-      $pull: {tags: oldTag}
-    };
-
-    const taskCollection = await tasks();
-    await taskCollection.updateMany(findDocuments, firstUpdate);
-    await taskCollection.updateMany(findDocuments, secondUpdate);
-
-    return await this.getTasksByTag(newTag);
-  }
 };
 
 module.exports = exportedMethods;

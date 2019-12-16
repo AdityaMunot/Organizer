@@ -27,6 +27,22 @@ const constructorMethod = app => {
         }
     })
 
+    app.use("/index", (req, res) => {
+        try {
+            res.render("posts/index.handlebars")
+        } catch (e) {
+            res.status(404).json({ error: e })
+        }
+    })
+
+    app.use("/single", (req, res) => {
+        try {
+            res.render("posts/single.handlebars")
+        } catch (e) {
+            res.status(404).json({ error: e })
+        }
+    })
+
     app.use("/finance", (req, res) => {
         try {
             res.render("details/finance")
