@@ -4,15 +4,15 @@ const data = require('../data');
 const taskData = data.tasks;
 const userData = data.users;
 
-router.get('/new', async (req, res) => {
+router.get('/index', async (req, res) => {
   const users = await userData.getAllUsers();
-  res.render('tasks/new', {users: users});
+  res.render('posts/index', {users: users});
 });
 
 router.get('/:id', async (req, res) => {
   try {
     const task = await taskData.getTaskById(req.params.id);
-    res.render('tasks/single', {task: task}); //FIX!!!!!
+    res.render('posts/single', {task: task}); //FIX!!!!!
   } catch (e) {
     res.status(500).json({error: e});
   }
@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
   const taskList = await taskData.getAllTasks();
-  res.render('tasks/index', {tasks: taskList}); //FIX!!!!!
+  res.render('posts/index', {tasks: taskList}); //FIX!!!!!
 });
 
 router.post('/', async (req, res) => {
