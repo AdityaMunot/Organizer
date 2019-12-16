@@ -1,0 +1,96 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/home">ORGANIZER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                {{#if expreq.session.userID}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedule">Schedule<span class="sr-only">(current)/span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/finance">Finance</a>
+                </li>
+                {{/if}}
+            </ul>
+            <div>
+                {{#if expreq.session.userID}}
+                <a class="btn btn-outline-success" href="/logout">Log out</a>
+                {{else}}
+                <a class="btn btn-outline-success" href="/login">Login</a>
+                <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container-fluid col-lg-4 col-md-6" style="margin-top: 60px;">
+    <div class="form-group">
+        <h1 style="text-align:center">User Profile</h1>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active mr-auto"><a data-toggle="tab" href="#profile">Profile</a></li>
+        <li><a data-toggle="tab" href="#changePassword">Change Password</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="profile" class="tab-pane active in">
+            <form action="/profile/userdelete" method="post" class="">
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name: </label>
+                    <input type="text" class="form-control" id="firstName" placeholder={{userFound.firstName}}
+                        name="firstName" required readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" class="form-control" id="lastName" placeholder={{userFound.lastName}}
+                        name="lastName" required readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="uName">User Name: </label>
+                    <input type="text" class="form-control" id="uName" placeholder={{userFound.uName}} name="uName"
+                        required readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="emailID">Email ID: </label>
+                    <input type="email" class="form-control" id="emailID" placeholder={{userFound.emailID}}
+                        name="emailID" required readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-danger">Delete User</button>
+                </div>
+            </form>
+        </div>
+        <div id="changePassword" class="tab-pane fade">
+            <form action="/profile/changepassword" method="post" class="">
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <label for="oldPassword">Old Password:</label>
+                    <input type="password" class="form-control" id="oldPassword"
+                        placeholder="Enter your current Password" name="oldPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" class="form-control" id="newPassword"
+                        placeholder="Enter your New Password" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-success btn-block">Change password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

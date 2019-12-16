@@ -1,5 +1,7 @@
-const loginRoutes = require("./login")
-const logoutRoutes = require("./logout")
+const loginRoutes = require("./login");
+const logoutRoutes = require("./logout");
+const signupRoutes = require("./signup");
+const profileRoutes = require("./profile");
 
 
 const constructorMethod = app => {
@@ -12,16 +14,10 @@ const constructorMethod = app => {
         }
     })
 
-    app.use("/signup", (req, res) => {
-        try {
-            res.render("details/signup")
-        } catch (e) {
-            res.status(404).json({ error: e })
-        }
-    })
-
-    app.use("/login", loginRoutes)
-    app.use("/logout", logoutRoutes)
+    app.use("/login", loginRoutes);
+    app.use("/logout", logoutRoutes);
+    app.use("/signup", signupRoutes);
+    app.use("/profile", profileRoutes);
 
     app.use("/schedule", (req, res) => {
         try {
