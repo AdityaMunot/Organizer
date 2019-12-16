@@ -3,9 +3,14 @@ const router = express.Router();
 const uData = require("../data/users");
 
 router.get("/", async (req, res) => {
+    var accounts = [];
     userId = req.session.userID;
     let userFound = await uData.getUserById(userId);
-    res.render('details/profile', { userFound });
+    for (i=0; i<userFound.accounts.length; i++){
+        accounts.push(userFound.accounts[i]);
+    }
+    console.log(accounts)
+    res.render('details/profile', { userFound , accounts });
 })
 
 router.post("/userdelete", async (req, res) => {
