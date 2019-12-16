@@ -26,9 +26,14 @@ app.use('*',(req,res, next)=>{
        new Date().toUTCString(),
        req.method,
        req.originalUrl,
-       `${req.session.user ? "" : "Non-"}Authenticated User`
+       `${req.session.userID ? "" : "Non-"}Authenticated User`
        );
     next()
+})
+
+app.use(function(req, res, next) {
+    app.locals.expreq = req;
+    next();
 })
 
 app.engine("handlebars", expHbs({defaultLayout: "main" }));

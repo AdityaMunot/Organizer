@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                {{#if session.userID}}
+                {{#if expreq.session.userID}}
                     <li class="nav-item">
                         <a class="nav-link" href="/schedule">Schedule</a>
                     </li>
@@ -17,7 +17,7 @@
                 {{/if}}
             </ul>
             <div>
-                {{#if session.userID}}
+                {{#if expreq.session.userID}}
                     <a class="btn btn-outline-success" href="/logout">Log out</a>
                 {{else}}
                     <a class="btn btn-outline-success" href="/login">Login</a>
