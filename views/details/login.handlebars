@@ -1,24 +1,27 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="">ORGANIZER</a>
+        <a class="navbar-brand" href="/home">ORGANIZER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/schedule">Schedule</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/finance">Finance</a>
-                </li>
+                {{#if expreq.session.userID}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/schedule">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/finance">Finance</a>
+                    </li>
+                {{/if}}
             </ul>
             <div>
-                <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                {{#if expreq.session.userID}}
+                    <a class="btn btn-outline-success" href="/logout">Log out</a>
+                {{else}}
+                    <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                {{/if}}
             </div>
         </div>
     </nav>
@@ -59,6 +62,9 @@
     <div id="displayMessage">
         {{#if "displayMessage == 'login'"}}
         <p>{{loginMessage}}</p>
+        {{/if}}
+        {{#if "displayMessage == 'logout'"}}
+            <p>{{logoutMessage}}</p>
         {{/if}}
     </div>
 
