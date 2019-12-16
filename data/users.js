@@ -150,7 +150,53 @@ const getByUserName = async function getByUserName(username)
     return userFoundbyUserName
 }
 
-    let exportedMethods = {
+const passwordChange = async function passwordChange(id, oldPassword, newPassword) {
+
+    if (!id) throw "for passwordChange() you must provide id"
+    if (!oldPassword) throw "for passwordChange() you must provide a old password"
+    if (!newPassword) throw "for passwordChange() you must provide a new password"
+
+    if (typeof id != "string") throw "for passwordChange() username must be a string"
+    if (typeof oldPassword != "string") throw "for passwordChange() old password must be string"
+    if (typeof newPassword != "string") throw "for passwordChange() new password must be string"
+
+    const salts = 16
+    let regExPwd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    validPwd = ""
+    if (regExPwd.test(newPassword)) {
+        validPwd = newPassword
+    }
+    else {
+        throw "password doesnt satisfy all conditions\n" +
+        "password between 8 to 15 characters which contain\n" +
+        "at least one lowercase letter, one uppercase letter, one numeric digit, and one special character"
+    }
+    let hashedPwd = await bcrypt.hash(validPwd, salts)
+    updatedPasswordInfo = {
+        pwd: hashedPwd,
+    }
+
+    const _users = await users();
+
+    userFound = await _users.findOne({_id: ObjectId(id) })
+    
+    if (userFound === null || userFound === undefined) {
+        throw "for get(id) there is no such user with that id in the collection"
+    }
+    else {
+        let comparePWD = await bcrypt.compare(oldPassword, userFound.pwd)
+        if(comparePWD){
+            const updateInfo = await _users.updateOne({_id: ObjectId(id)}, { $set: updatedPasswordInfo})
+            if (!updateInfo.matchedCount && !updateInfo.modifiedCount) throw 'Update failed';
+            return true
+        }
+        else{
+            return false
+        }
+    }
+}
+
+let exportedMethods = {
 
         // async addUser(uName, pwd, emailId, firstName, lastName) {
 
@@ -307,5 +353,6 @@ module.exports = {
     getUserById,
     loginUser,
     getByUserName,
+    passwordChange,
     exportedMethods
 };
