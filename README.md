@@ -11,4 +11,4 @@ Features:
 ## How To Run:
 Head to your terminal, `git clone` this repository, and then `cd` into the project directory. Then, write `npm i` to get the dependencies installed.  After that, you may want to run an `npm test` just to make sure your system is working correctly.
 
-Now, start up the server with an `node app.js` and head on over to `localhost:3000`. Once there, click around and explore! Feel free to make tasks, as well as an account!
+Now, start up the server with an `node app.js` and head on over to `localhost:3000/home`. Once there, click around and explore! Feel free to make tasks, as well as an account!
