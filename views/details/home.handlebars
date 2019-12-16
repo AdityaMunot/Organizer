@@ -8,20 +8,20 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 {{#if expreq.session.userID}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/schedule">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/finance">Finance</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/finance">Finance</a>
+                </li>
                 {{/if}}
             </ul>
             <div>
                 {{#if expreq.session.userID}}
-                    <a class="btn btn-outline-success" href="/logout">Log out</a>
+                <a class="btn btn-outline-success" href="/logout">Log out</a>
                 {{else}}
-                    <a class="btn btn-outline-success" href="/login">Login</a>
-                    <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                <a class="btn btn-outline-success" href="/login">Login</a>
+                <a class="btn btn-outline-success" href="/signup">Sign up</a>
                 {{/if}}
             </div>
         </div>
@@ -29,145 +29,176 @@
 </header>
 
 <!-- Begin page content -->
-<main role="main" class="container">
+<main role="main">
 
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777" /></svg>
-                    <div class="container">
-                        <div class="carousel-caption text-left">
-                            <h1>Welcome to the Organizer!</h1>
-                            <p>This is a web app that acts as your daily schedule and finance assistant.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                        </div>
+    <!--Carousel Wrapper-->
+    <div id="video-carousel-example2" class="carousel slide carousel-fade" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#video-carousel-example2" data-slide-to="0" class="active"></li>
+            <li data-target="#video-carousel-example2" data-slide-to="1"></li>
+            <li data-target="#video-carousel-example2" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!-- First slide -->
+            <div class="carousel-item active">
+                <!--Mask color-->
+                <div class="view">
+                    <!--Video source-->
+                    <video class="video-fluid" autoplay loop muted>
+                        <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+                    </video>
+                    <div class="mask rgba-indigo-light"></div>
+                </div>
+
+                <!--Caption-->
+                <div class="carousel-caption">
+                    <div class="animated fadeInDown">
+                        <h1 class="h1-responsive">Welcome to the Organizer!</h1>
+                        <p>This is a web app that acts as your daily schedule and finance assistant.</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777" /></svg>
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Scheduler</h1>
-                            <p>For the scheduler, you can layout your daily thoughts, comments, notes, and events.
-                                The timed trigger event will send you an email as a reminder!</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777" /></svg>
-                    <div class="container">
-                        <div class="carousel-caption text-right">
-                            <h1>Finance Organizer</h1>
-                            <p>You can organize your finance like spending, saving and recurring bills. Included is
-                                a pie-based chart to show spending, saving in the category.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Check it out!</a></p>
-                        </div>
-                    </div>
-                </div>
+                <!--Caption-->
             </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <!-- /.First slide -->
+
+            <!-- Second slide -->
+            <div class="carousel-item">
+                <!--Mask color-->
+                <div class="view">
+                    <!--Video source-->
+                    <video class="video-fluid" autoplay loop muted>
+                        <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
+                    </video>
+                    <div class="mask rgba-purple-slight"></div>
+                </div>
+
+                <!--Caption-->
+                <div class="carousel-caption">
+                    <div class="animated fadeInDown">
+                        <h1 class="h1-responsive">Scheduler</h1>
+                        <p>For the scheduler, you can layout your daily thoughts, comments, notes, and events.
+                            The timed trigger event will send you an email as a reminder!</p>
+                    </div>
+                </div>
+                <!--Caption-->
+            </div>
+            <!-- /.Second slide -->
+
+            <!-- Third slide -->
+            <div class="carousel-item">
+                <!--Mask color-->
+                <div class="view">
+                    <!--Video source-->
+                    <video class="video-fluid" autoplay loop muted>
+                        <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                    </video>
+                    <div class="mask rgba-black-strong"></div>
+                </div>
+
+                <!--Caption-->
+                <div class="carousel-caption">
+                    <div class="animated fadeInDown">
+                        <h1 class="h1-responsive">Finance Organizer</h1>
+                        <p>You can organize your finance like spending, saving and recurring bills. Included is
+                            a pie-based chart to show spending, saving in the category.</p>
+                    </div>
+                </div>
+                <!--Caption-->
+            </div>
+            <!-- /.Third slide -->
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#video-carousel-example2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#video-carousel-example2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+    <!--Carousel Wrapper-->
+
+    <!-- Marketing messaging and featurettes
+  ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h1>About Organizer:</h1>
+                <h2 class="">A task manager and a financial assistant <span class="text-muted">all in
+                        one.</span></h2>
+                <p class="lead">Our team thought of this after we realized we were using separate apps to keep track
+                    of our tasks and financial tasks. We thought -- why not have it all in one place? Thus, Organizer
+                    was born. To try it out, all you have to do is create an account and login! </p>
+            </div>
+            <div class="col-md-5">
+                <img width="100%" height="100%" src="https://cdn.vox-cdn.com/thumbor/ADcUhqxfHa7f1iahTap7Ys5tLzY=/0x0:2040x1360/1820x1213/filters:focal(913x731:1239x1057):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/59542711/akrales_180426_2511_0019.0.jpg">
+            </div>
         </div>
 
+        <hr class="featurette-divider">
 
-        <!-- Marketing messaging and featurettes
-  ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-
-        <div class="container marketing">
-
-
-            <!-- START THE FEATURETTES -->
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your
-                            mind.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                        euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                        tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                        height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                        focusable="false" role="img" aria-label="Placeholder: 500x500">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
-                            dy=".3em">500x500</text>
-                    </svg>
-                </div>
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for
+                        yourself.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+                    tellus ac cursus commodo.</p>
             </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for
-                            yourself.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                        euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                        tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                        height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                        focusable="false" role="img" aria-label="Placeholder: 500x500">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
-                            dy=".3em">500x500</text>
-                    </svg>
-                </div>
+            <div class="col-md-5 order-md-1">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                    height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                    focusable="false" role="img" aria-label="Placeholder: 500x500">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                        dy=".3em">500x500</text>
+                </svg>
             </div>
+        </div>
 
-            <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                        euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                        tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                        height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                        focusable="false" role="img" aria-label="Placeholder: 500x500">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
-                            dy=".3em">500x500</text>
-                    </svg>
-                </div>
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+                    tellus ac cursus commodo.</p>
             </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                    height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                    focusable="false" role="img" aria-label="Placeholder: 500x500">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                        dy=".3em">500x500</text>
+                </svg>
+            </div>
+        </div>
 
-            <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
-            <!-- /END THE FEATURETTES -->
+        <!-- /END THE FEATURETTES -->
 
-        </div><!-- /.container -->
+    </div><!-- /.container -->
 
-        <!-- FOOTER -->
-        <footer class="container">
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2019 RAP &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2019 RAP &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
 </main>
