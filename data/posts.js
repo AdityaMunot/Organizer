@@ -31,7 +31,7 @@ const exportedMethods = {
     const newInsertInformation = await postCollection.insertOne(newPost);
     const newId = newInsertInformation.insertedId;
 
-    await users.addPostToUser(newId, title);
+    // await users.addPostToUser(newId, title);
 
     return await this.getPostById(newId);
   },
