@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5df737de91d3712c9cb32d4c"},"firstName":"ruthy","lastName":"levi","emailID":"rlevi@stevens.edu","uName":"rlevi","pwd":"$2a$16$MrC.qYkuND9TIyU059tOFuikY/iDstd8aBWjwFRsfxdBCVB79ppPq","accounts":[["1234","Checkings","Chase"],["1235","Savings","Chase"]]}
+{"_id":{"$oid":"5df7bd7bb782b05550b2b73a"},"firstName":"aditya","lastName":"munot","emailID":"munot4@gmail.com","uName":"amunot","pwd":"$2a$16$PZ794vanRJ/HfcRNXvfpZ.yRio1YH73Rxv3iFVN4FZxyPePRYe/qS","accounts":[]}

@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5df80185779f3651ccc4bd68"},"accountNo":"1234","amount":{"$numberDecimal":"500"},"comment":"Salary"}
