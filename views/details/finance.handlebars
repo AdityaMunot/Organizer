@@ -8,25 +8,78 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 {{#if expreq.session.userID}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/schedule">Schedule</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/finance">Finance <span class="sr-only">(current)</span></a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/finance">Finance <span class="sr-only">(current)</span></a>
+                </li>
                 {{/if}}
             </ul>
             <div>
                 {{#if expreq.session.userID}}
-                    <a class="btn btn-outline-success" href="/logout">Log out</a>
+                <a class="btn btn-outline-success" href="/logout">Log out</a>
                 {{else}}
-                    <a class="btn btn-outline-success" href="/login">Login</a>
-                    <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                <a class="btn btn-outline-success" href="/login">Login</a>
+                <a class="btn btn-outline-success" href="/signup">Sign up</a>
                 {{/if}}
             </div>
         </div>
     </nav>
 </header>
+<!-- Begin page content -->
+<main role="main" class="container-fluid col-lg-6 col-md-6" style="margin-top: 60px;">
+    <div class="form-group">
+        <h3 style="text-align:center">Personal Finance</h3>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active mr-auto"><a data-toggle="tab" href="#transaction">Transaction History</a></li>
+        <li><a data-toggle="tab" href="#addTransaction">Add Transactions</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="transaction" class="tab-pane active in">
+            <ol>
+                <div class="row">
+                    <div class="col-sm" style="text-align:center">
+                        Transaction No
+                    </div>
+                    <div class="col-sm" style="text-align:center">
+                        Account No
+                    </div>
+                    <div class="col-sm" style="text-align:center">
+                        Amount
+                    </div>
+                    <div class="col-sm" style="text-align:center">
+                        Comment
+                    </div>
+                </div>
+                {{#each allTransaction}}
+                <li>
+                    <div class="row">
+                        <div class="col-sm mr-auto" style="text-align:center">
+                            {{this._id}}
+                        </div>
+                        <div class="col-sm mr-auto" style="text-align:center">
+                            {{this.accountNo}}
+                        </div>
+                        <div class="col-sm mr-auto" style="text-align:center">
+                            {{this.amount}}
+                        </div>
+                        <div class="col-sm mr-auto" style="text-align:center">
+                            {{this.comment}}
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+
+
+        </div>
+        <div id="addTransaction" class="tab-pane fade">
+
+        </div>
+    </div>
+</main>

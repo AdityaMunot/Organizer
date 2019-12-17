@@ -1,5 +1,6 @@
 module.exports = {
     users: require("./users"),
-    tasks: require("./tasks")
+    tasks: require("./tasks"),
+    accounts: require("./finance"),
   };
   
