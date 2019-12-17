@@ -1,26 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../data');
-const taskData = data.tasks;
+const taskData = data.posts;
 const userData = data.users;
 
-router.get('/index', async (req, res) => {
+router.get('/new', async (req, res) => {
   const users = await userData.getAllUsers();
-  res.render('posts/index', {users: users});
+  res.render('posts/new', {users: users});
 });
 
 router.get('/:id', async (req, res) => {
   try {
-    const task = await taskData.getTaskById(req.params.id);
-    res.render('posts/single', {task: task}); //FIX!!!!!
+    const post = await taskData.getTaskById(req.params.id);
+    res.render('posts/single', {post: post}); //FIX!!!!!
   } catch (e) {
     res.status(500).json({error: e});
   }
 });
 
 router.get('/', async (req, res) => {
-  const taskList = await taskData.getAllTasks();
-  res.render('posts/index', {tasks: taskList}); //FIX!!!!!
+  const postList = await taskData.getAllTasks();
+  res.render('posts/index', {posts: postList}); //FIX!!!!!
 });
 
 router.post('/', async (req, res) => {
@@ -35,12 +35,9 @@ router.post('/', async (req, res) => {
     errors.push('No body provided');
   }
 
-  if (!blogTaskData.posterId) {
-    errors.push('No poster selected');
-  }
 
   if (errors.length > 0) {
-    res.render('tasks/new', {
+    res.render('posts/new', {
       errors: errors,
       hasErrors: true,
       task: blogTaskData
@@ -55,7 +52,7 @@ router.post('/', async (req, res) => {
       blogTaskData.posterId
     );
 
-    res.redirect(`/tasks/${newTask._id}`);
+    res.redirect(`/posts/${newTask._id}`);
   } catch (e) {
     res.status(500).json({error: e});
   }

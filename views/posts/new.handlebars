@@ -32,10 +32,9 @@
 
     <main role="main" class="container-fluid col-lg-4 col-md-6" style="margin-top: 60px;">
         <div class="form-group">
+            <article class="new-post">
             <h1 style="text-align:center">Create a Task!</h1>
-
-
-            <form action="/index" method="POST" class="new-post-form">
+            <form action="/posts" method="POST" class="new-post-form">
                 <label>
                     Task Title
                     <input type="text" name="title" placeholder="Task Title" value="{{post.title}}"
@@ -47,14 +46,14 @@
                         class="full-width-input">{{post.body}}</textarea>
                 </label>
 
-                <label for="poster">
+                {{!-- <label for="poster">
                     Poster
                     <select class="full-width-input" name="posterId">
                         <option value="">Select User...</option>
                         {{#each users}}
                         <option value="{{_id}}">{{firstName}} {{lastName}}</option>
                         {{/each}}
-                </label>
+                </label> --}}
 
                 </select>
                 <button type="submit">Create New Task</button>
