@@ -1,0 +1,44 @@
+{{!-- IF YOU WANT TO SEE A SPECIFIC TASK --}}
+
+{{!-- THIS SHOWS ALL THE TASKS A USER SUBMITTED --}}
+
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/home">ORGANIZER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        {{#if expreq.session.userID}}
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/schedule">Schedule <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/finance">Finance</a>
+        </li>
+        {{/if}}
+      </ul>
+      <div>
+        {{#if expreq.session.userID}}
+        <a class="btn btn-outline-success" href="/logout">Log out</a>
+        {{else}}
+        <a class="btn btn-outline-success" href="/login">Login</a>
+        <a class="btn btn-outline-success" href="/signup">Sign up</a>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+
+<main role="main" class="container-fluid col-lg-4 col-md-6" style="margin-top: 60px;">
+ <article class="post">
+  <h1 style="text-align:center">{{ post.title }}</h1>
+  <address>Post ID: {{post._id}}</address>
+  <p>{{ post.body }}</p>
+
+  <a href="/schedule/posts">Back to All Posts</a>
+</article>

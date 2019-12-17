@@ -12,6 +12,6 @@ const getCollection = collection =>{
 
 module.exports={
   users : getCollection("users"),
-  tasks: getCollection("tasks"),
+  posts: getCollection("posts"),
   accounts: getCollection("accounts"),
 }

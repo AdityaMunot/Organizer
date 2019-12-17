@@ -1,0 +1,66 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/home">ORGANIZER<span class="sr-only">(current)</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                {{#if expreq.session.userID}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/finance">Finance</a>
+                </li>
+                {{/if}}
+            </ul>
+            <div>
+                {{#if expreq.session.userID}}
+                <a class="btn btn-outline-success" href="/logout">Log out</a>
+                {{else}}
+                <a class="btn btn-outline-success" href="/login">Login</a>
+                <a class="btn btn-outline-success" href="/signup">Sign up</a>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</header>
+<main role="main" class="container-fluid col-lg-4 col-md-6" style="margin-top: 60px;">
+    <div class="form-group">
+        <h1 style="text-align:center">Create a Task!</h1>
+        <hr>
+    </div>
+    <article class="new-post">
+
+    <form action="/schedule/posts" method="POST" class="new-post-form">
+        <label for="title">Task Title</label>
+        <input type="text" id="title" name="title" placeholder="Task Title" value="{{post.title}}"
+            class="full-width-input" required /><br>
+        <label for="post-body">Task Body</label>
+        <textarea id="post-body" name="body" rows="4" placeholder="Task Content"
+            class="full-width-input">{{post.body}}</textarea>
+
+
+
+        </select>
+        <a href="/schedule/posts">All Posts</a>
+        <button type="submit">Create New Task</button>
+        <button type="reset">Clear Form</button>
+    </form>
+    </article>
+    </div>
+    {{#if hasErrors}}
+    <ul class="error-list">
+        {{#each errors}}
+        <li>
+            {{this}}
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+</main>
