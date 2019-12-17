@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
     for (i=0; i<userFound.accounts.length; i++){
         accounts.push(userFound.accounts[i]);
     }
-    console.log(accounts)
     res.render('details/profile', { userFound , accounts });
 })
 
