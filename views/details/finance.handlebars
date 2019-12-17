@@ -33,11 +33,12 @@
 <!-- Begin page content -->
 <main role="main" class="container-fluid col-lg-6 col-md-6" style="margin-top: 60px;">
     <div class="form-group">
-        <h3 style="text-align:center">Personal Finance</h3>
+        <h1 style="text-align:center">Personal Finance</h1>
     </div>
     <ul class="nav nav-tabs">
         <li class="active mr-auto"><a data-toggle="tab" href="#transaction">Transaction History</a></li>
-        <li><a data-toggle="tab" href="#addTransaction">Add Transactions</a></li>
+        <li class="mr-auto"><a data-toggle="tab" href="#addTransaction">Add Transactions</a></li>
+        <li><a data-toggle="tab" href="#deleteTransaction">Delete Transactions</a></li>
     </ul>
     <div class="tab-content">
         <div id="transaction" class="tab-pane active in">
@@ -78,8 +79,51 @@
 
 
         </div>
-        <div id="addTransaction" class="tab-pane fade">
+        <div id="deleteTransaction" class="tab-pane fade">
+            <form action="/finance/deleteTransaction" method="post" class="">
+                <div class="form-group">
 
+                </div>
+                <div class="form-group">
+                    <label for="transactionId">Transaction Id:</label>
+                    <select class="form-control" id="transactionId" name="transactionId">
+                        {{#each allTransaction}}
+                        <option>{{this._id}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-danger btn-block">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div id="addTransaction" class="tab-pane fade">
+            <form action="/finance/addTransaction" method="post" class="">
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <label for="accountNo">Account No:</label>
+                    <select class="form-control" id="accountNo" name="accountNo">
+                        {{#each transactions}}
+                        <option>{{this.[0].accountNo}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" class="form-control" id="amount"
+                        placeholder="Enter the amount for this Transaction" name="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <input type="text" class="form-control" id="comment" placeholder="Comment for this Transaction"
+                        name="comment" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-success btn-block">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </main>
