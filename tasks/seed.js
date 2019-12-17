@@ -11,9 +11,12 @@ async function main() {
   const ruthy = await users.createUser('ruthylevi', 'iLoveCorgis97!', 'rlevi@stevens.edu', 'Ruthy', 'Levi');
   const id = ruthy._id;
 
+  const aditya = await users.createUser('amunot', 'Password99?', 'amunot@stevens.edu', 'Aditya', 'Munot');
+  const aditya_id = aditya._id;
+
   await posts.addPost(
     'Using the seed',
-    'We use the seed to have some initial data so we can just focus on servers this week',
+    'We use the seed to have some initial data',
   );
 
   console.log('Done seeding database');
