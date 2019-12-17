@@ -1,78 +1,72 @@
 const mongoCollections = require('../config/mongoCollections');
-const tasks = mongoCollections.tasks;
+const posts = mongoCollections.posts;
 const users = require('./users');
 const uuid = require('uuid/v4');
 
 const exportedMethods = {
-  async getAllTasks() {
-    const taskCollection = await tasks();
-    return await taskCollection.find({}).toArray();
+  async getAllPosts() {
+    const postCollection = await posts();
+    return await postCollection.find({}).toArray();
   },
-  async getTaskById(id) {
-    const taskCollection = await tasks();
-    const task = await taskCollection.findOne({_id: id});
+  async getPostById(id) {
+    const postCollection = await posts();
+    const post = await postCollection.findOne({_id: id});
 
-    if (!task) throw 'Task not found';
-    return task;
+    if (!post) throw 'Post not found';
+    return post;
   },
-  async addTask(title, body, posterId) {
+  async addPost(title, body) {
     if (typeof title !== 'string') throw 'No title provided';
     if (typeof body !== 'string') throw 'I aint got nobody!';
 
 
-    const taskCollection = await tasks();
+    const postCollection = await posts();
 
-    const userThatPosted = await users.getUserById(posterId);
-
-    const newTask = {
+    const newPost = {
       title: title,
       body: body,
-      poster: {
-        id: posterId,
-        name: `${userThatPosted.firstName} ${userThatPosted.lastName}`
-      },
       _id: uuid()
     };
 
-    const newInsertInformation = await taskCollection.insertOne(newTask);
+    const newInsertInformation = await postCollection.insertOne(newPost);
     const newId = newInsertInformation.insertedId;
 
-    await users.addTaskToUser(posterId, newId, title);
+    await users.addPostToUser(newId, title);
 
-    return await this.getTaskById(newId);
+    return await this.getPostById(newId);
   },
-  async removeTask(id) {
-    const taskCollection = await tasks();
-    let task = null;
+  async removePost(id) {
+    const postCollection = await posts();
+    let post = null;
     try {
-      task = await this.getTaskById(id);
+      post = await this.getPostById(id);
     } catch (e) {
       console.log(e);
       return;
     }
-    const deletionInfo = await taskCollection.removeOne({_id: id});
+    const deletionInfo = await postCollection.removeOne({_id: id});
     if (deletionInfo.deletedCount === 0) {
       throw `Could not delete task with id of ${id}`;
     }
-    await users.removeTaskFromUser(task.poster.id, id);
+    await users.removePostFromUser(id);
     return true;
   },
-  async updateTask(id, updatedTask) {
-    const taskCollection = await tasks();
+  async updatePost(id, updatedPost) {
+    const postCollection = await posts();
 
-    const updatedTaskData = {};
+    const updatedPostData = {};
 
-    if (updatedTask.title) {
-      updatedTaskData.title = updatedTask.title;
+    if (updatedPost.title) {
+      updatedPostData.title = updatedPost.title;
     }
 
-    if (updatedTask.body) {
-      updatedTaskData.body = updatedTask.body;
+    if (updatedPost.body) {
+      updatedPostData.body = updatedPost.body;
     }
 
-    await taskCollection.updateOne({_id: id}, {$set: updatedTaskData});
+    await postCollection.updateOne({_id: id}, {$set: updatedPostData});
 
-    return await this.getTaskById(id);
+    return await this.getPostById(id);
   },
 };
 
