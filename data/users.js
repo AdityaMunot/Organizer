@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs")
 const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
+const accounts = mongoCollections.accounts;
 const ObjectId = require('mongodb').ObjectID;
 
 const createUser = async function createUser(uName, pwd, emailId, firstName, lastName) {

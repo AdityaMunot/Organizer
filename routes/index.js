@@ -4,6 +4,7 @@ const signupRoutes = require("./signup");
 const profileRoutes = require("./profile");
 const postRoutes = require("./posts");
 const userRoutes = require("./users");
+const financeRoutes = require("./finance");
 
 
 const constructorMethod = app => {
@@ -48,13 +49,7 @@ const constructorMethod = app => {
         }
     })
 
-    app.use("/finance", (req, res) => {
-        try {
-            res.render("details/finance")
-        } catch (e) {
-            res.status(404).json({ error: e })
-        }
-    })
+    app.use("/finance", financeRoutes)
 
     app.use("*", (req, res) => {
         res.status(404).render("details/error", { error: { status: 404, message: "Not found" } });
